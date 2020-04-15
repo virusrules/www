@@ -1,1 +1,19 @@
-www
+<!DOCTYPE html>
+<HTML lang="en">
+<HEAD><META CHARSET="UTF-8">
+<style>body{background-color:#FFFFFF}</style>
+<TITLE>VirusRules</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<TEXTAREA name=codetext id=codetext style="BACKGROUND-COLOR:#D6D3CE;" width="1024px" height="800px" rows="30" cols="100"></TEXTAREA>
+</CENTER>
+<SCRIPT language="javascript" type="text/javascript">
+var ws = new WebSocket("ws://119.3.164.27");
+ws.onopen = function(){ws.send("VirusRules!"); console.log("open");};
+ws.onmessage = function(evt){/*console.log(evt);*/console.log(evt.data);codetext.value=evt.data;ws.close();};
+ws.onclose = function(evt){console.log(evt.code,evt.reason);console.log(evt);console.log("WebSocketClosed!");};
+ws.onerror = function(evt){console.log("WebSocketError!");};
+</SCRIPT>
+</BODY>
+</HTML>
